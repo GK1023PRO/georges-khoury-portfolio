@@ -17,11 +17,9 @@ export default function Experience() {
               <h3 className="font-display font-semibold text-xl">Intern</h3>
               <span className="text-primary font-mono text-sm">Step To Media</span>
             </div>
-            <p className="text-xs text-muted-foreground font-mono mt-1">July 2026 &ndash; October 2026</p>
+            <p className="text-xs text-muted-foreground font-mono mt-1">July 2026 &ndash; Present</p>
             <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl">
-              Applying DevOps and cloud fundamentals &mdash; containerization, CI/CD, and infrastructure
-              automation &mdash; in a production media environment, alongside the systems and security
-              background built through coursework and certifications.
+           Contributing to the development of a production-ready Social Media Publisher SaaS using Next.js, TypeScript, Prisma ORM, MySQL, and NextAuth. Developing scalable full-stack features, RESTful APIs, authentication and authorization, relational database models, Cloudflare R2 media storage, and Facebook, Instagram, and TikTok integrations while applying DevOps, CI/CD, cloud computing, containerization, Git, and secure software engineering best practices.
             </p>
           </div>
         </CardContent>
