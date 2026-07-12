@@ -1,0 +1,18 @@
+[1mdiff --git a/src/components/home/Experience.tsx b/src/components/home/Experience.tsx[m
+[1mindex f939c34..d7a37ce 100644[m
+[1m--- a/src/components/home/Experience.tsx[m
+[1m+++ b/src/components/home/Experience.tsx[m
+[36m@@ -17,11 +17,9 @@[m [mexport default function Experience() {[m
+               <h3 className="font-display font-semibold text-xl">Intern</h3>[m
+               <span className="text-primary font-mono text-sm">Step To Media</span>[m
+             </div>[m
+[31m-            <p className="text-xs text-muted-foreground font-mono mt-1">July 2026 &ndash; October 2026</p>[m
+[32m+[m[32m            <p className="text-xs text-muted-foreground font-mono mt-1">July 2026 &ndash; Present</p>[m
+             <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl">[m
+[31m-              Applying DevOps and cloud fundamentals &mdash; containerization, CI/CD, and infrastructure[m
+[31m-              automation &mdash; in a production media environment, alongside the systems and security[m
+[31m-              background built through coursework and certifications.[m
+[32m+[m[32m           Contributing to the development of a production-ready Social Media Publisher SaaS using Next.js, TypeScript, Prisma ORM, MySQL, and NextAuth. Developing scalable full-stack features, RESTful APIs, authentication and authorization, relational database models, Cloudflare R2 media storage, and Facebook, Instagram, and TikTok integrations while applying DevOps, CI/CD, cloud computing, containerization, Git, and secure software engineering best practices.[m
+             </p>[m
+           </div>[m
+         </CardContent>[m
