@@ -1,8 +1,10 @@
 "use client";
 
-import MobileNavigation from "@/components/layout/mobile-navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import MobileNavigation from "@/components/layout/mobile-navigation";
+import ThemeToggle from "@/components/layout/theme-toggle";
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -13,12 +15,18 @@ const navigationItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-function isActiveRoute(pathname: string, href: string): boolean {
+function isActiveRoute(
+  pathname: string,
+  href: string
+): boolean {
   if (href === "/") {
     return pathname === "/";
   }
 
-  return pathname === href || pathname.startsWith(`${href}/`);
+  return (
+    pathname === href ||
+    pathname.startsWith(`${href}/`)
+  );
 }
 
 export default function Navbar() {
@@ -42,13 +50,18 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           {navigationItems.map((item) => {
-            const active = isActiveRoute(pathname, item.href);
+            const active = isActiveRoute(
+              pathname,
+              item.href
+            );
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={active ? "page" : undefined}
+                aria-current={
+                  active ? "page" : undefined
+                }
                 className={[
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   active
@@ -63,6 +76,8 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
+
           <Link
             href="/contact"
             className={[

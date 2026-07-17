@@ -1,14 +1,15 @@
-import type { Metadata, } from "next";
+import type { Metadata } from "next";
 
 import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
+import ThemeProvider from "@/components/providers/theme-provider";
 import { siteConfig } from "@/lib/site-config";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  
+
   title: {
     default: `${siteConfig.name} | ${siteConfig.title}`,
     template: `%s | ${siteConfig.name}`,
@@ -17,12 +18,14 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   manifest: "/manifest.webmanifest",
   applicationName: `${siteConfig.name} Portfolio`,
+
   authors: [
     {
       name: siteConfig.author.name,
       url: siteConfig.author.linkedin,
     },
   ],
+
   creator: siteConfig.author.name,
   publisher: siteConfig.author.name,
   keywords: [...siteConfig.keywords],
@@ -80,15 +83,25 @@ export default function RootLayout({
   children,
 }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="georges-portfolio-theme"
+        >
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
 
-          <div className="flex-1 pt-16">{children}</div>
+            <div className="flex-1 pt-16">
+              {children}
+            </div>
 
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -32,13 +32,13 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={0.16}>
-            <p className="mt-6 font-display text-2xl text-signal">
+            <p className="mt-6 font-display text-2xl text-primary">
               Building pipelines, not just projects.
             </p>
           </Reveal>
 
           <Reveal delay={0.24}>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-mute">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               Computer &amp; Communications Engineering student at Antonine
               University specializing in Systems &amp; Networks Engineering. I
               containerize applications, automate infrastructure, and build
@@ -70,11 +70,11 @@ export default function Hero() {
             {stats.map((stat) => (
               <StaggerItem key={stat.label}>
                 <div>
-                  <div className="font-display text-3xl font-semibold text-signal">
+                  <div className="font-display text-3xl font-semibold text-primary">
                     {stat.value}
                   </div>
 
-                  <div className="mt-1 text-xs text-mute">
+                  <div className="mt-1 text-xs text-muted-foreground">
                     {stat.label}
                   </div>
                 </div>

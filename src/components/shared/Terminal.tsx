@@ -44,21 +44,21 @@ export default function Terminal() {
 
   return (
     <div className="card-surface rounded-lg overflow-hidden shadow-2xl shadow-black/40 w-full">
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-line bg-panel2">
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-secondary">
         <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
         <span className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
         <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-        <span className="ml-3 font-mono text-xs text-mute">georges@pipeline: ~/infra</span>
+       <span className="ml-3 font-mono text-xs text-muted-foreground">georges@pipeline: ~/infra</span>
       </div>
       <div className="p-5 font-mono text-[13px] leading-relaxed min-h-[190px]">
         {LINES.slice(0, lineIndex).map((l, i) => (
           <div key={i} className="mb-2 opacity-60">
-            <span className="text-signal">$</span> {l.cmd}
-            <div className="text-mute">{l.out}</div>
+            <span className="text-primary">$</span> {l.cmd}
+            <div className="text-muted-foreground">{l.out}</div>
           </div>
         ))}
         <div>
-          <span className="text-signal">$</span> {typed}
+          <span className="text-primary">$</span> {typed}
           {phase === "typing" && <span className="blink">▍</span>}
         </div>
         {(phase === "output" || phase === "pause") && (
