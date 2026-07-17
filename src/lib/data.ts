@@ -7,6 +7,7 @@ export type Project = {
   tags: string[];
   github?: string;
   live?: string;
+  detailsSlug?: string;
 };
 
 export const projects: Project[] = [
