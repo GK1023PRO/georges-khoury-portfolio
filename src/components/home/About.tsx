@@ -1,5 +1,16 @@
-import { GraduationCap, Boxes, Cloud, ShieldCheck } from "lucide-react";
+import {
+  Boxes,
+  Cloud,
+  GraduationCap,
+  ShieldCheck,
+} from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/stagger-container";
 
 const pillars = [
   {
@@ -10,47 +21,73 @@ const pillars = [
   {
     icon: Boxes,
     title: "DevOps & Automation",
-    desc: "Docker, Kubernetes, Terraform, Ansible and ArgoCD across 19 shipped projects.",
+    desc: "Docker, Kubernetes, Terraform, Ansible, and ArgoCD across 19 shipped projects.",
   },
   {
     icon: Cloud,
     title: "Cloud & AWS",
-    desc: "AWS Cloud Practitioner track: EC2, S3, RDS, Lambda and serverless foundations.",
+    desc: "AWS Cloud Practitioner track covering EC2, S3, RDS, Lambda, and serverless foundations.",
   },
   {
     icon: ShieldCheck,
     title: "Cybersecurity",
-    desc: "CCNA and Junior Cybersecurity Analyst certified, from threat detection to incident response.",
+    desc: "Cisco networking and cybersecurity training covering threat detection, network defense, and incident response.",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="max-w-6xl mx-auto px-6 py-24">
-      <p className="section-eyebrow mb-4">About me</p>
-      <h2 className="font-display font-semibold text-4xl sm:text-5xl max-w-2xl leading-tight">
-        From provisioning a server to hardening it.
-      </h2>
-      <p className="mt-6 text-muted-foreground text-lg max-w-2xl leading-relaxed">
-        I&apos;m Georges Khoury, a Computer &amp; Communications Engineering student who likes taking
-        infrastructure all the way through the lifecycle &mdash; write it as code, containerize it, deploy
-        it through a pipeline, and monitor it once it&apos;s live. My goal is to grow into a DevOps and cloud
-        engineer who can design, automate, secure, and operate real production systems.
-      </p>
+    <section id="about" className="mx-auto max-w-6xl px-6 py-24">
+      <Reveal>
+        <p className="section-eyebrow mb-4">About me</p>
+      </Reveal>
 
-      <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {pillars.map((p) => (
-          <Card key={p.title} className="hover:border-primary/50 transition-colors">
-            <CardContent className="pt-6">
-              <div className="w-11 h-11 rounded-md bg-secondary border border-border flex items-center justify-center text-primary mb-5">
-                <p.icon size={20} />
-              </div>
-              <h3 className="font-display font-semibold text-lg">{p.title}</h3>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{p.desc}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <Reveal delay={0.08}>
+        <h2 className="max-w-2xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
+          From provisioning a server to hardening it.
+        </h2>
+      </Reveal>
+
+      <Reveal delay={0.16}>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          I&apos;m Georges Khoury, a Computer &amp; Communications Engineering
+          student who enjoys taking infrastructure through its full lifecycle
+          &mdash; defining it as code, containerizing applications, deploying
+          them through CI/CD pipelines, and monitoring them in production. My
+          goal is to grow into a DevOps and Cloud Engineer who can design,
+          automate, secure, and operate reliable systems.
+        </p>
+      </Reveal>
+
+      <StaggerContainer
+        className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        delay={0.24}
+        stagger={0.08}
+      >
+        {pillars.map((pillar) => {
+          const Icon = pillar.icon;
+
+          return (
+            <StaggerItem key={pillar.title}>
+              <Card className="h-full transition-colors hover:border-primary/50">
+                <CardContent className="pt-6">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-md border border-border bg-secondary text-primary">
+                    <Icon aria-hidden="true" size={20} />
+                  </div>
+
+                  <h3 className="font-display text-lg font-semibold">
+                    {pillar.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {pillar.desc}
+                  </p>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+          );
+        })}
+      </StaggerContainer>
     </section>
   );
 }
