@@ -1,99 +1,153 @@
-import { Mail, Linkedin, Github, FileText, MapPin, Phone } from "lucide-react";
+import {
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+
 import { Card } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/stagger-container";
+
+const contactItems = [
+  {
+    label: "Email",
+    value: "georgeskh003@hotmail.com",
+    href: "mailto:georgeskh003@hotmail.com",
+    icon: Mail,
+    ariaLabel: "Email Georges Khoury",
+    external: false,
+download: false,
+  },
+  {
+    label: "Phone",
+    value: "+961 76 939 864",
+    href: "tel:+96176939864",
+    icon: Phone,
+    ariaLabel: "Call Georges Khoury",
+    external: false,
+download: false,
+  },
+  {
+    label: "LinkedIn",
+    value: "georgeskhoury23",
+    href: "https://www.linkedin.com/in/georgeskhoury23",
+    icon: Linkedin,
+    ariaLabel: "Open Georges Khoury's LinkedIn profile",
+    external: true,
+    download: false,
+  },
+  {
+    label: "GitHub",
+    value: "GK1023PRO",
+    href: "https://github.com/GK1023PRO",
+    icon: Github,
+    ariaLabel: "Open Georges Khoury's GitHub profile",
+    external: true,
+download: false,
+  },
+  {
+    label: "Resume",
+    value: "Download CV",
+    href: "/resume/Georges-Khoury-Resume.pdf",
+    icon: FileText,
+    ariaLabel: "Download Georges Khoury's resume",
+    external: false,
+download: true,
+  },
+] as const;
 
 export default function Contact() {
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-6 py-24">
-      <Card className="p-8 sm:p-12">
-        <p className="section-eyebrow mb-4">Contact</p>
-        <h2 className="font-display font-semibold text-4xl sm:text-5xl">Let&apos;s build something together.</h2>
-        <p className="mt-5 text-muted-foreground text-lg max-w-xl">
-          I&apos;m open to internship and part-time opportunities in DevOps, cloud engineering, and
-          cybersecurity.
-        </p>
+    <section
+      id="contact"
+      className="mx-auto max-w-6xl px-6 py-24"
+    >
+      <Reveal>
+        <Card className="overflow-hidden p-8 sm:p-12">
+          <Reveal delay={0.08}>
+            <p className="section-eyebrow mb-4">Contact</p>
+          </Reveal>
 
-        <div className="mt-10 grid sm:grid-cols-2 gap-4">
-          <a
-            href="mailto:georgeskh003@hotmail.com"
-            className="flex items-center gap-4 p-5 rounded-lg bg-secondary border border-border hover:border-primary/50 transition-colors"
+          <Reveal delay={0.16}>
+            <h2 className="font-display text-4xl font-semibold sm:text-5xl">
+              Let&apos;s build something together.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.24}>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              I&apos;m open to internship and part-time opportunities in
+              DevOps, cloud engineering, networking, cybersecurity, and
+              full-stack development.
+            </p>
+          </Reveal>
+
+          <StaggerContainer
+            className="mt-10 grid gap-4 sm:grid-cols-2"
+            delay={0.3}
+            stagger={0.07}
           >
-            <span className="w-10 h-10 rounded-md bg-background border border-border flex items-center justify-center text-primary shrink-0">
-              <Mail size={18} />
-            </span>
-            <div>
-              <p className="text-xs text-muted-foreground">Email</p>
-              <p className="font-semibold text-sm">georgeskh003@hotmail.com</p>
-            </div>
-          </a>
+            {contactItems.map((item) => {
+              const Icon = item.icon;
 
-          <a
-            href="tel:+96176939864"
-            className="flex items-center gap-4 p-5 rounded-lg bg-secondary border border-border hover:border-primary/50 transition-colors"
-          >
-            <span className="w-10 h-10 rounded-md bg-background border border-border flex items-center justify-center text-primary shrink-0">
-              <Phone size={18} />
-            </span>
-            <div>
-              <p className="text-xs text-muted-foreground">Phone</p>
-              <p className="font-semibold text-sm">+961 76 939 864</p>
-            </div>
-          </a>
+              return (
+                <StaggerItem key={item.label} className="h-full">
+                  <a
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={
+                      item.external
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    download={item.download || undefined}
+                    aria-label={item.ariaLabel}
+                    className="group flex h-full items-center gap-4 rounded-lg border border-border bg-secondary p-5 transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-md hover:shadow-primary/5"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                      <Icon aria-hidden="true" size={18} />
+                    </span>
 
-          <a
-            href="https://www.linkedin.com/in/georgeskhoury23"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-4 p-5 rounded-lg bg-secondary border border-border hover:border-primary/50 transition-colors"
-          >
-            <span className="w-10 h-10 rounded-md bg-background border border-border flex items-center justify-center text-primary shrink-0">
-              <Linkedin size={18} />
-            </span>
-            <div>
-              <p className="text-xs text-muted-foreground">LinkedIn</p>
-              <p className="font-semibold text-sm">georgeskhoury23</p>
-            </div>
-          </a>
+                    <div className="min-w-0">
+                      <p className="text-xs text-muted-foreground">
+                        {item.label}
+                      </p>
 
-          <a
-            href="https://github.com/GK1023PRO"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-4 p-5 rounded-lg bg-secondary border border-border hover:border-primary/50 transition-colors"
-          >
-            <span className="w-10 h-10 rounded-md bg-background border border-border flex items-center justify-center text-primary shrink-0">
-              <Github size={18} />
-            </span>
-            <div>
-              <p className="text-xs text-muted-foreground">GitHub</p>
-              <p className="font-semibold text-sm">GK1023PRO</p>
-            </div>
-          </a>
+                      <p className="break-words text-sm font-semibold">
+                        {item.value}
+                      </p>
+                    </div>
+                  </a>
+                </StaggerItem>
+              );
+            })}
 
-          <a
-            href="/resume/Georges-Khoury-Resume.pdf"
-            download
-            className="flex items-center gap-4 p-5 rounded-lg bg-secondary border border-border hover:border-primary/50 transition-colors"
-          >
-            <span className="w-10 h-10 rounded-md bg-background border border-border flex items-center justify-center text-primary shrink-0">
-              <FileText size={18} />
-            </span>
-            <div>
-              <p className="text-xs text-muted-foreground">Resume</p>
-              <p className="font-semibold text-sm">Download CV</p>
-            </div>
-          </a>
+            <StaggerItem className="h-full">
+              <div className="flex h-full items-center gap-4 rounded-lg border border-border bg-secondary p-5">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
+                  <MapPin aria-hidden="true" size={18} />
+                </span>
 
-          <div className="flex items-center gap-4 p-5 rounded-lg bg-secondary border border-border">
-            <span className="w-10 h-10 rounded-md bg-background border border-border flex items-center justify-center text-primary shrink-0">
-              <MapPin size={18} />
-            </span>
-            <div>
-              <p className="text-xs text-muted-foreground">Location</p>
-              <p className="font-semibold text-sm">Zahle, Lebanon</p>
-            </div>
-          </div>
-        </div>
-      </Card>
+                <div>
+                  <p className="text-xs text-muted-foreground">
+                    Location
+                  </p>
+
+                  <p className="text-sm font-semibold">
+                    Zahle, Lebanon
+                  </p>
+                </div>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
+        </Card>
+      </Reveal>
     </section>
   );
 }
