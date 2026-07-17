@@ -2,47 +2,76 @@ import { Award, ExternalLink } from "lucide-react";
 import { certifications } from "@/lib/data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/ui/reveal";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/stagger-container";
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="max-w-6xl mx-auto px-6 py-24">
-      <p className="section-eyebrow mb-4">Certifications</p>
-      <h2 className="font-display font-semibold text-4xl sm:text-5xl">Continuous learning.</h2>
-      <p className="mt-5 text-muted-foreground text-lg max-w-2xl">
-        Professional certifications reinforcing my knowledge in networking, cybersecurity, and cloud
-        infrastructure.
-      </p>
+    <section
+      id="certifications"
+      className="max-w-6xl mx-auto px-6 py-24"
+    >
+      <Reveal>
+        <p className="section-eyebrow mb-4">Certifications</p>
+      </Reveal>
 
-      <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <Reveal delay={0.08}>
+        <h2 className="font-display font-semibold text-4xl sm:text-5xl">
+          Continuous learning.
+        </h2>
+      </Reveal>
+
+      <Reveal delay={0.16}>
+        <p className="mt-5 text-muted-foreground text-lg max-w-2xl">
+          Professional certifications reinforcing my knowledge in networking,
+          cybersecurity, and cloud infrastructure.
+        </p>
+      </Reveal>
+
+      <StaggerContainer className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {certifications.map((c) => (
-          <Card key={c.title} className="flex flex-col">
-            <CardContent className="pt-6 flex flex-col flex-1">
-              <div className="w-10 h-10 rounded-md bg-secondary border border-border flex items-center justify-center text-primary mb-6">
-                <Award size={18} />
-              </div>
-              <h3 className="font-display font-semibold text-[15px] leading-snug">{c.title}</h3>
-              <p className="text-xs text-muted-foreground mt-3">{c.issuer}</p>
+          <StaggerItem key={c.title}>
+            <Card className="flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:border-primary/50">
+              <CardContent className="flex flex-1 flex-col pt-6">
+                <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-secondary text-primary">
+                  <Award size={18} />
+                </div>
 
-              <div className="flex items-center justify-between mt-auto pt-6">
-                <Badge
-                  variant="secondary"
-                  className="rounded-full font-mono text-primary text-xs px-3 py-1"
-                >
-                  {c.year}
-                </Badge>
-                <a
-                  href={c.verifyUrl || "#"}
-                  target={c.verifyUrl ? "_blank" : undefined}
-                  rel={c.verifyUrl ? "noreferrer" : undefined}
-                  className="inline-flex items-center gap-1 text-xs font-mono text-primary hover:underline"
-                >
-                  Verify <ExternalLink size={13} />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
+                <h3 className="font-display text-[15px] font-semibold leading-snug">
+                  {c.title}
+                </h3>
+
+                <p className="mt-3 text-xs text-muted-foreground">
+                  {c.issuer}
+                </p>
+
+                <div className="mt-auto flex items-center justify-between pt-6">
+                  <Badge
+                    variant="secondary"
+                    className="rounded-full px-3 py-1 font-mono text-xs text-primary"
+                  >
+                    {c.year}
+                  </Badge>
+
+                  <a
+                    href={c.verifyUrl || "#"}
+                    target={c.verifyUrl ? "_blank" : undefined}
+                    rel={c.verifyUrl ? "noreferrer" : undefined}
+                    className="inline-flex items-center gap-1 text-xs font-mono text-primary transition-colors hover:underline"
+                    aria-label={`Verify ${c.title}`}
+                  >
+                    Verify
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }
