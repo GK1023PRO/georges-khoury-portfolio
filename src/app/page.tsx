@@ -5,7 +5,6 @@ import Experience from "@/components/home/Experience";
 import Hero from "@/components/home/Hero";
 import Projects from "@/components/home/Projects";
 import Skills from "@/components/home/Skills";
-
 export default function HomePage() {
   return (
     <main>
